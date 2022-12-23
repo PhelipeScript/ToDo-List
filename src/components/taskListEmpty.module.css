@@ -1,0 +1,31 @@
+.taskListEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 46rem;
+  min-height: 15.25rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+
+  border-top: 1px solid var(--gray-400);
+}
+
+.taskListEmpty .clipBoard {
+  font-weight: 400;
+  font-size: 7.5rem;
+  color: var(--gray-400);
+}
+.taskListEmpty p {
+  color: var(--gray-300);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 140%;
+}
+
+.taskListEmpty p + p {
+  font-weight: 400;
+  opacity: .8;
+}

@@ -30,7 +30,7 @@
 
 .task > input[type="checkbox"]::after {
   content: "\2713";
-  font-size: 12px;
+  font-size: 14px;
   color: var(--gray-100);
   visibility: hidden;
 }

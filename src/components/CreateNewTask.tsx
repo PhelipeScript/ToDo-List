@@ -3,6 +3,7 @@ import { AiOutlinePlusCircle } from 'react-icons/all';
 
 import styles from './createNewTask.module.css';
 import { NewTask } from './factories/NewTask';
+import { TaskListEmpty } from './TaskListEmpty';
 import { TasksCounter } from './TasksCounter';
 
 export function CreateNewTask() {
@@ -42,7 +43,10 @@ export function CreateNewTask() {
         tasksDone={0} 
       />
 
-      {tasks.length > 1 ? <NewTask /> : null}
+      {tasks.length > 1 ? tasks.map(task => {
+        if(task === '') return null;
+        return <NewTask key={task} name={task} />
+      }) : <TaskListEmpty /> }
       
 
     </div>

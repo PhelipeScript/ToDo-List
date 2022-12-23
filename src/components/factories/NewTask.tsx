@@ -2,13 +2,17 @@ import { IoTrashOutline } from "react-icons/all";
 
 import styles from './newTask.module.css';
 
-export function NewTask() {
+interface TaskName {
+  name: string;
+}
+
+export function NewTask({ name }: TaskName) {
   return (
     <div className={styles.task}>
       <input 
         type="checkbox" 
       />
-      <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+      <p>{name}</p>
       <button>
         <IoTrashOutline />
       </button>
