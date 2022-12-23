@@ -1,0 +1,51 @@
+.wrapper {
+  padding: 0 1rem;
+}
+
+.createNewTask {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  margin: -1.68rem auto 0;
+  height: 3.37rem;
+  max-width: 46rem;
+}
+
+.createNewTask > input[type="text"] {
+  font-size: 1rem;
+  color: var(--gray-300);
+  background-color: var(--gray-500);
+
+  width: 39.87rem;
+  height: 100%;
+  padding: 1rem;
+  outline: none;
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+}
+
+.createNewTask > input[type="text"]:focus-within {
+  border: 1px solid var(--purple-dark);
+  color: var(--gray-100);
+}
+
+.createNewTask > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background-color: var(--blue-dark);
+  color: var(--gray-100);
+  font-size: 1rem;
+
+  padding: 1rem;
+  border: 0;
+  border-radius: 8px;
+}
+
+.createNewTask > button:not(:disabled):hover {
+  cursor: pointer;
+  background-color: var(--blue);
+}
