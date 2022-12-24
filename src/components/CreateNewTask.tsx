@@ -9,14 +9,29 @@ import { TasksCounter } from './TasksCounter';
 export function CreateNewTask() {
   const [tasks, setTasks] = useState(['']);
 
-  const [tasksDone, setTasksDone] = useState(0);
+  const [tasksDone, setTasksDone] = useState(['']);
 
   const [taskText, setTaskText] = useState('');
+
+  function handleSetTasksDone(taskName: string) {
+    if(tasksDone.includes(taskName)) {
+      const tasksDoneWithoutDeletedOne = tasksDone.filter(task =>{
+        return task!== taskName;
+      })
+      return setTasksDone(tasksDoneWithoutDeletedOne);
+    }
+    setTasksDone([...tasksDone, taskName]);
+  }
 
   function handleDeleteTask(taskName: string) {
     const taskListWithoutDeletedOne = tasks.filter(task =>{
       return task !== taskName; 
     })
+    const tasksDoneWithoutDeletedOne = tasksDone.filter(task =>{
+      return task!== taskName;
+    })
+
+    setTasksDone(tasksDoneWithoutDeletedOne);
     setTasks(taskListWithoutDeletedOne);
   }
 
@@ -49,7 +64,7 @@ export function CreateNewTask() {
 
       <TasksCounter 
         tasksCreated={tasks.length - 1} 
-        tasksDone={0} 
+        tasksDone={tasksDone.length - 1} 
       />
 
       {tasks.length > 1 ? tasks.map(task => {
@@ -59,6 +74,7 @@ export function CreateNewTask() {
             key={task} 
             name={task} 
             onHandleDeleteTask={handleDeleteTask}
+            onHandleSetTasksDone={handleSetTasksDone}
           />
         )
       }) : <TaskListEmpty /> }
