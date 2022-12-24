@@ -37,6 +37,9 @@ export function CreateNewTask() {
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
+    if(tasks.includes(taskText)) {
+      return alert('Você já adicionou essa tarefa ! Tente adicionar outra')
+    }
     setTasks([...tasks, taskText]);
     setTaskText('');
   }
