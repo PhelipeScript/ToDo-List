@@ -13,6 +13,13 @@ export function CreateNewTask() {
 
   const [taskText, setTaskText] = useState('');
 
+  function handleDeleteTask(taskName: string) {
+    const taskListWithoutDeletedOne = tasks.filter(task =>{
+      return task !== taskName; 
+    })
+    setTasks(taskListWithoutDeletedOne);
+  }
+
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
     setTasks([...tasks, taskText]);
@@ -47,7 +54,13 @@ export function CreateNewTask() {
 
       {tasks.length > 1 ? tasks.map(task => {
         if(task === '') return null;
-        return <NewTask key={task} name={task} />
+        return (
+          <NewTask 
+            key={task} 
+            name={task} 
+            onHandleDeleteTask={handleDeleteTask}
+          />
+        )
       }) : <TaskListEmpty /> }
       
 
