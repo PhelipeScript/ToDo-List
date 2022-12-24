@@ -23,6 +23,8 @@ export function CreateNewTask() {
     setTaskText(event.target.value)
   }
 
+  const regex = /[a-zA-Z0-9]/;
+
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleCreateNewTask} className={styles.createNewTask}>
@@ -32,7 +34,7 @@ export function CreateNewTask() {
           placeholder="Adicione uma nova tarefa" 
           onChange={handleNewTaskChange}
         />
-        <button>
+        <button disabled={!regex.test(taskText)} >
           Criar
           <AiOutlinePlusCircle />
         </button>
